@@ -14,7 +14,6 @@ const DATA_FILES = {
     '/xaydungduongham': './public/datas/datas-xaydungduongham.js',
     '/ngoiphao': './public/datas/datas-ngoiphao.js'
 };
-
 function getDatasByPath(path) {
     switch (path) {
         case '/': return window.Datavainetvedinhgialong;
@@ -39,60 +38,18 @@ function loadScript(src) {
         document.head.appendChild(s);
     });
 }
-async function render() {
-    const path = location.hash.replace('#', '') || '/';
-    const page = routes[path];
-
-    if (DATA_FILES[path] && !window.DATAS_LOADED?.[path]) {
-        await loadScript(DATA_FILES[path]);
+function preloadAllDatas() {
+    if (!window.DATAS_LOADED?.['/']) {
+        loadScript(DATA_FILES['/']);
     }
-    if (typeof page === 'function') {
-        app.innerHTML = page();
-        const datas = getDatasByPath(path);
-        if (path !== "/chuyendekhac") {
-            if (!datas) {
-                alert("Lỗi Sai Đường Dẫn Dữ Liệu");
-            } else {
-                const container = document.getElementById("dataMap");
-                container.innerHTML = '';
-                datas.forEach((item, index) => {
-                    if (item.title1) {
-                        const title1 = document.createElement('h2');
-                        const title2 = document.createElement('h2');
-                        title1.className = 'lang lang-vi';
-                        title2.className = 'lang lang-eng';
-                        title1.innerHTML = item.title1;
-                        title2.innerHTML = item.title2;
-                        title2.style.display = 'none';
-                        container.appendChild(title1);
-                        container.appendChild(title2);
-                        return;
-                    }
-                    const itemDiv = document.createElement('div');
-                    itemDiv.className = "box";
-                    const img = document.createElement('img');
-                    img.src = item.img;
-                    img.alt = index + 1;
-                    img.className = 'd-block w-100';
-                    img.loading = index < 5 ? "eager" : "lazy";
-                    const contentp1 = document.createElement('p');
-                    const contentp2 = document.createElement('p');
-                    contentp1.className = 'lang lang-vi';
-                    contentp2.className = 'lang lang-eng';
-                    contentp2.style.display = 'none';
-                    contentp1.innerHTML = item.decs1;
-                    contentp2.innerHTML = item.decs2;
-                    itemDiv.appendChild(img);
-                    itemDiv.appendChild(contentp1);
-                    itemDiv.appendChild(contentp2);
-                    container.appendChild(itemDiv);
-                });
-            }
+    Object.entries(DATA_FILES).forEach(([path, file]) => {
+        if (!window.DATAS_LOADED?.[path]) {
+            loadScript(file);
         }
-    } else {
-        app.innerHTML = '<h2>404</h2>';
-    }
-    /* Scroll top */
+    });
+}
+
+function afterRender() {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     document.querySelectorAll('.readmore-btn').forEach(btn => {
         btn.onclick = () => {
@@ -109,16 +66,72 @@ async function render() {
         document.querySelectorAll(`.${lang}`).forEach(el => el.style.display = 'block');
         document.querySelectorAll(`.${lang}-inline`).forEach(el => el.style.display = 'inline');
     }
-    if (path === '/') {
-        setTimeout(() => {
-            Object.entries(DATA_FILES).forEach(([p, file]) => {
-                if (!window.DATAS_LOADED?.[p]) {
-                    loadScript(file);
-                }
-            });
-        }, 0);
+}
+
+async function render() {
+    const path = location.hash.replace('#', '') || '/';
+    const page = routes[path];
+    if (path === '/chuyendekhac' && typeof page === 'function') {
+        app.innerHTML = page();
+        afterRender();
+        hideLoader();
+        preloadAllDatas();
+        return;
+    }
+    if (DATA_FILES[path] && !window.DATAS_LOADED?.[path]) {
+        await loadScript(DATA_FILES[path]);
+    }
+    if (typeof page === 'function') {
+        app.innerHTML = page();
+        const datas = getDatasByPath(path);
+        if (path !== "/chuyendekhac") {
+            if (!datas) {
+                alert("Dữ liệu chưa được tải, đợi ít phút và chuyển lại trang/The data hasn't loaded yet, please wait a few minutes and return to the page.");
+            } else {
+                const container = document.getElementById("dataMap");
+                container.innerHTML = '';
+                datas.forEach((item, index) => {
+                    if (item.title1) {
+                        const h1 = document.createElement('h2');
+                        const h2 = document.createElement('h2');
+                        h1.className = 'lang lang-vi';
+                        h2.className = 'lang lang-eng';
+                        h1.innerHTML = item.title1;
+                        h2.innerHTML = item.title2;
+                        h2.style.display = 'none';
+                        container.appendChild(h1);
+                        container.appendChild(h2);
+                        return;
+                    }
+                    const box = document.createElement('div');
+                    box.className = 'box';
+                    const img = document.createElement('img');
+                    img.src = item.img;
+                    img.alt = index + 1;
+                    img.className = 'd-block w-100';
+                    img.loading = index < 5 ? 'eager' : 'lazy';
+                    const p1 = document.createElement('p');
+                    const p2 = document.createElement('p');
+                    p1.className = 'lang lang-vi';
+                    p2.className = 'lang lang-eng';
+                    p2.style.display = 'none';
+                    p1.innerHTML = item.decs1;
+                    p2.innerHTML = item.decs2;
+                    box.appendChild(img);
+                    box.appendChild(p1);
+                    box.appendChild(p2);
+                    container.appendChild(box);
+                });
+            }
+        }
+    } else {
+        app.innerHTML = '<h2>404</h2>';
     }
     hideLoader();
+    if (path === '/') {
+        preloadAllDatas();
+    }
 }
+
 window.addEventListener('hashchange', render);
 window.addEventListener('load', render);
