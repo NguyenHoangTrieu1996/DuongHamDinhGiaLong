@@ -116,7 +116,6 @@ function render() {
         btn.addEventListener('click', () => {
             const wrap = btn.closest('.readmore-wrap');
             wrap.classList.toggle('show');
-
             btn.textContent = wrap.classList.contains('show')
                 ? btn.dataset.close
                 : btn.dataset.open;
