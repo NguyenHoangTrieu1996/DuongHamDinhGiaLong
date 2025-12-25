@@ -124,13 +124,14 @@ async function render() {
                 });
             }
         }
+         afterRender();
     } else {
         app.innerHTML = '<h2>404</h2>';
     }
-    hideLoader();
     if (path === '/') {
         preloadAllDatas();
     }
+    hideLoader();
 }
 
 window.addEventListener('hashchange', render);

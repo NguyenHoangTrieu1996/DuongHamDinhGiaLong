@@ -12,7 +12,7 @@ window.ChuyenDeKhac = function () {
                 <li><a href="./public/songnuoc-doc/page2.html">📄 SÔNG NGÒI KÊNH RẠCH</a></li>
             </ul>
 
-             <ul class="lang lang-eng" style="dislay: none;">
+             <ul class="lang lang-eng" style="display: none;">
                 <li><a href="./public/vanhoa-main/index.html">📄 CULTURE</a></li>
                 <li><a href="./public/kinhte-merge/index.html">📄 ECONEMIC</a></li>
                 <li><a href="./public/songnuoc-doc/page2.html">📄 RIVER</a></li>
