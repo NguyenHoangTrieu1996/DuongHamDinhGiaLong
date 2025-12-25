@@ -2,7 +2,7 @@ window.NgoiPhao = function () {
     return `
      <section>
         <h1 class="lang lang-vi">NGÒI PHÁO 09/01/1950</h1>
-        <h1 class="lang lang-eng">THE SPARK OF JANUARY 9, 1950</h1>
+        <h1 class="lang lang-eng"  style="display: none;">THE SPARK OF JANUARY 9, 1950</h1>
         <div class="readmore-wrap" id="wrap">
             <div class="lang lang-vi">
                 <p class="readmore-text ">

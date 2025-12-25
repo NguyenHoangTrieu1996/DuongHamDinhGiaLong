@@ -2,7 +2,7 @@ window.KienTrucXua = function () {
   return `
     <section>
         <h1 class="lang lang-vi">MỘT SỐ CÔNG TRÌNH KIẾN TRÚC XƯA <br>TẠI SÀI GÒN - THÀNH PHỐ HỒ CHÍ MINH </h1>
-        <h1 class="lang lang-eng">SOME FRENCH-STYLE ARCHITECTURAL <br>STRUCTURES IN SAIGON - HO CHI MINH CITY</h1>
+        <h1 class="lang lang-eng"  style="display: none;">SOME FRENCH-STYLE ARCHITECTURAL <br>STRUCTURES IN SAIGON - HO CHI MINH CITY</h1>
         <div class="readmore-wrap" id="wrap">
             <div class="lang lang-vi">
                 <p class="readmore-text ">

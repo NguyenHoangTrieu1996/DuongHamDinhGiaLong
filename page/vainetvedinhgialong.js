@@ -2,7 +2,7 @@ window.VaiNetVeDinh = function () {
     return `
      <section>
         <h1 class="lang lang-vi">VÀI NÉT VỀ DINH GIA LONG <br> VÀ ĐƯỜNG HẦM TRONG DINH</h1>
-        <h1 class="lang lang-eng">AN OVERVIEW OF GIA LONG PALACE <br>AND THE TUNNEL WITHIN</h1>
+        <h1 class="lang lang-eng" style="display: none;">AN OVERVIEW OF GIA LONG PALACE <br>AND THE TUNNEL WITHIN</h1>
         <div class="readmore-wrap" id="wrap">
             <div class="lang lang-vi">
                 <p class="readmore-text ">

@@ -2,7 +2,7 @@ window.ThayNguaGiuaDong = function () {
     return `
     <section>
         <h1 class="lang lang-vi">THAY NGỰA GIỮA DÒNG</h1>
-        <h1 class="lang lang-eng">STAGE A COUP</h1>
+        <h1 class="lang lang-eng"  style="display: none;">STAGE A COUP</h1>
         <div class="readmore-wrap" id="wrap">
             <div class="lang lang-vi">
                 <p class="readmore-text ">

@@ -2,7 +2,7 @@ window.XayDungDuongHam=function () {
     return`
      <section>
         <h1 class="lang lang-vi">XÂY DỰNG ĐƯỜNG HẦM</h1>
-        <h1 class="lang lang-eng">CONSTRUCTION OF AN UNDERGROUND TUNNEL</h1>
+        <h1 class="lang lang-eng"  style="display: none;">CONSTRUCTION OF AN UNDERGROUND TUNNEL</h1>
         <div class="readmore-wrap" id="wrap">
             <div class="lang lang-vi">
                 <p class="readmore-text ">
