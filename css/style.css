@@ -1,0 +1,241 @@
+:root {
+    --color-first: #d0a405;
+    --color-text: #fbc504;
+    --color-desc: #012884;
+    --color-chucvu: #fbc504;
+    --colorh1: #ec2227;
+}
+
+.logo {
+    width: 30%;
+    margin: auto;
+    padding-top: 2vh;
+}
+
+h1 {
+    text-align: center;
+    color: var(--colorh1);
+    font-size: clamp(18px, 4vw, 64px);
+    font-weight: 700;
+}
+
+
+/* Text Đóng Mở */
+.readmore-wrap {
+    font-size: clamp(12px, 2vw, 22px);
+    line-height: 1.6;
+    text-align: justify;
+    max-width: 90%;
+    margin: auto;
+}
+
+.readmore-text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    line-clamp: 5;
+    overflow: hidden;
+    margin-bottom: 0.8vh;
+}
+
+.readmore-btn {
+    display: block;
+    margin-left: 6px;
+    font-size: clamp(14px, 1.2vw, 18px);
+    color: #2563eb;
+    cursor: pointer;
+    font-weight: 600;
+    white-space: nowrap;
+    text-align-last: right;
+}
+
+.readmore-wrap.show .readmore-text {
+    -webkit-line-clamp: unset;
+    line-clamp: unset;
+}
+
+/* changLange */
+#changeLang {
+    border: none;
+    background: transparent;
+    position: fixed;
+    bottom: 7vh;
+    right: 5%;
+    width: 10%;
+}
+
+.box {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+    padding: 2vw 0;
+}
+
+.box:last-child {
+    margin-bottom: 5vh;
+}
+
+.box p {
+    padding-top: 1vw;
+}
+
+
+#dataMap h2 {
+    text-align: center;
+    color: var(--colorh1);
+    font-size: clamp(14px, 3vw, 28px);
+    font-weight: 700;
+}
+
+/* Nav */
+.nav-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    z-index: 1000;
+}
+
+.nav-decor {
+    height: clamp(8px, 2vh, 14px);
+    background: #d9d9d9;
+    border-radius: clamp(12px, 4vw, 28px) clamp(12px, 4vw, 28px) 0 0;
+}
+
+.nav-list {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    margin: 0;
+    padding: clamp(6px, 1vh, 12px) 0;
+    list-style: none;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(11px, 2.6vw, 15px);
+    cursor: pointer;
+    transition: color 0.25s ease, transform 0.15s ease;
+    color: #000;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+.nav-item i {
+    font-size: clamp(18px, 5vw, 26px);
+    margin-bottom: clamp(2px, 0.4vh, 6px);
+}
+
+.nav-item p {
+    margin: 0;
+    line-height: 1.2;
+    font-size: clamp(8px, 1.2vw, 12px);
+    text-align: center;
+}
+
+.nav-item.active {
+    color: #0d6efd;
+}
+
+/* Chuyên đề khác */
+.document {
+    background: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.document h2 {
+    margin: 0 0 15px;
+    font-size: 1.5em;
+    color: #444;
+    border-left: 5px solid #007bff;
+    padding-left: 10px;
+}
+
+.document-scroll {
+    height: 90vh;
+    overflow-y: auto;
+}
+
+.document ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.document li {
+    margin: 10px 0;
+}
+
+.document a {
+    display: block;
+    text-decoration: none;
+    background: #f8f9fa;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-weight: 500;
+    color: #007bff;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.document a:hover {
+    background: #007bff;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Loader */
+.loader {
+    display: flex;
+    justify-content: center;
+}
+
+.loader.hidden {
+    display: none;
+}
+
+.loader .dot {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    border: 2px solid #e8e8e8;
+    background: #16b0c1;
+    animation: jump 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes jump {
+    100% {
+        background: #661e92;
+        transform: translateZ(-3rem) scale(1.9);
+    }
+}
+
+.loader .dot:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.loader .dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.loader .dot:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.loader .dot:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.loader .dot:nth-child(5) {
+    animation-delay: 0.5s;
+}
