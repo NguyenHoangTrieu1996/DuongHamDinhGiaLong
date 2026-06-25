@@ -160,8 +160,8 @@ a {
     color: #000;
 }
 
-.nav-item i {
-    font-size: clamp(18px, 5vw, 26px);
+.nav-item svg {
+    width: 20%;
     margin-bottom: clamp(2px, 0.4vh, 6px);
 }
 
